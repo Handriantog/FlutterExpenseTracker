@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:expense_planner/widgets/adaptive_flat_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -50,11 +54,10 @@ class _AddTransactionState extends State<AddTransaction> {
         elevation: 5,
         child: Padding(
           padding: EdgeInsets.only(
-            top: 10,
-            left: 10,
-            right: 10,
-            bottom: MediaQuery.of(context).viewInsets.bottom + 10
-          ),
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -82,13 +85,7 @@ class _AddTransactionState extends State<AddTransaction> {
                           ? "No Date Chosen"
                           : "Selected Date : ${DateFormat.yMd().format(_chosenDate)}"),
                     ),
-                    TextButton(
-                      onPressed: _openDatePicker,
-                      child: Text(
-                        "Choose Date",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    )
+                    AdaptiveFlatButton("Choose Date", _openDatePicker),
                   ],
                 ),
               ),
@@ -97,7 +94,7 @@ class _AddTransactionState extends State<AddTransaction> {
                     primary: Theme.of(context).primaryColor,
                     textStyle: Theme.of(context).textTheme.button),
                 onPressed: _onSubmitted,
-                child: Text("Add Transaction"),
+                child: const Text("Add Transaction"),
               ),
             ],
           ),
